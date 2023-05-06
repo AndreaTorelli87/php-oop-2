@@ -1,0 +1,12 @@
+.card {
+   width: calc(100% / 3);
+}
+
+.fa-solid {
+   background-color: lightgray;
+   padding: 0.6rem 1rem;
+   border-radius: 0.2rem;
+   position: absolute;
+   top: 1rem;
+   right: 1rem;
+}
