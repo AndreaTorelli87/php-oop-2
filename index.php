@@ -1,12 +1,7 @@
-<?php require_once __DIR__ . '/models/prodotti.php';
+<?php 
 
-function currency($string)
-{
-   if (!str_contains($string, "€")) {
-      throw new Exception('Devi inserire un prezzo in €uro');
-   }
-   return $string;
-}
+require_once __DIR__ . '/models/Prodotti.php';
+
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +36,7 @@ function currency($string)
                </p>
                <p class="card-text">Prezzo:
                   <?php try {
-                     echo currency($guinzaglio->prezzo);
+                     echo $guinzaglio->currency($guinzaglio->prezzo);
                   } catch (Exception $e) {
                      echo 'Eccezione: ' . $e->getMessage();
                   } ?>
@@ -59,7 +54,11 @@ function currency($string)
                   <?php echo $crocchette->categoria ?>
                </p>
                <p>Prezzo:
-                  <?php echo $crocchette->prezzo ?>
+               <?php try {
+                     echo $crocchette->currency($crocchette->prezzo);
+                  } catch (Exception $e) {
+                     echo 'Eccezione: ' . $e->getMessage();
+                  } ?>
                </p>
                <p>Peso:
                   <?php echo $crocchette->peso ?>
@@ -80,7 +79,11 @@ function currency($string)
                   <?php echo $pallina->categoria ?>
                </p>
                <p>Prezzo:
-                  <?php echo $pallina->prezzo ?>
+               <?php try {
+                     echo $pallina->currency($pallina->prezzo);
+                  } catch (Exception $e) {
+                     echo 'Eccezione: ' . $e->getMessage();
+                  } ?>
                </p>
                <p>Tipo:
                   <?php echo $pallina->tipo ?>
